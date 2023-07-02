@@ -2,13 +2,15 @@ import Fluent
 import Vapor
 
 func routes(_ app: Application) throws {
-    app.get { req async throws in
-        try await req.view.render("index", ["title": "Hello Vapor!"])
-    }
-
-    app.get("hello") { req async -> String in
-        "Hello, world!"
-    }
-
-    try app.register(collection: TodoController())
+    let acronymsCon = AcronymController()
+    try app.register(collection: acronymsCon)
+    
+    let userCon = UserController()
+    try app.register(collection: userCon)
+    
+    let catCon = CategoryController()
+    try app.register(collection: catCon)
+    
+    let webCon = WebsiteController()
+    try app.register(collection: webCon)
 }

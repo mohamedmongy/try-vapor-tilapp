@@ -2,11 +2,31 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-
-  <title>#(title)</title>
+  <title> #(title) </title>
 </head>
 
 <body>
-  <h1>#(title)</h1>
+  <h1> Acronyms </h1>
+  <table>
+   <thead>
+     <tr> 
+       <th> short </th> 
+        <th> long </th>
+     </tr>
+   </thead>
+
+   <tbody>
+      #if(acronyms): 
+        #for(acronym in acronyms):
+          <tr> 
+          <td><a href="/acronyms/#(acronym.id)">#(acronym.short)</td>
+          <td> #(acronym.long)</td>
+          </tr>
+        #endfor
+      #else:
+        <h2> there are no acronyms yet </h2>
+      #endif
+   </tbody>
+  </table>
 </body>
 </html>
